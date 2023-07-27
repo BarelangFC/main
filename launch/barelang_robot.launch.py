@@ -140,7 +140,6 @@ def generate_launch_description():
     ld.add_action(sensor_node)
     ld.add_action(main_strategy_node)
     ld.add_action(game_controller_node)
-    ld.add_action(path_finding_node)
     ld.add_action(robot_coordination_node)
     ld.add_action(oled_node)
     ld.add_action(ball_pose_node)
