@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Sequence>
+            <Action ID="Communication"/>
+            <Condition ID="KillRun"/>
+            <Fallback>
+                <Sequence>
+                    <Condition ID="GameControllerInit"/>
+                    <Action ID="InitialPosition"/>
+                    <AlwaysFailure/>
+                </Sequence>
+                <Sequence>
+                    <Condition ID="GameControllerReady"/>
+                    <Action ID="InitialPosition"/>
+                    <Action ID="RobotPositioning"/>
+                    <AlwaysFailure/>
+                </Sequence>
+                <Sequence>
+                    <Condition ID="GameControllerSet"/>
+                    <Fallback>
+                        <Action ID="BallTracking"/>
+                        <Action ID="ResetVar"/>
+                    </Fallback>
+                </Sequence>
+                <Sequence>
+                    <Condition ID="GameControllerPlay"/>
+                    <Action ID="InitialPosition"/>
+                </Sequence>
+                <Sequence>
+                    <Condition ID="GameControllerFinish"/>
+                    <AlwaysFailure/>
+                </Sequence>
+            </Fallback>
+            <Fallback>
+                <Sequence>
+                    <Condition ID="StatePickup"/>
+                    <Condition ID="StateRelease"/>
+                    <Action ID="RobotPositioning"/>
+                    <Action ID="ResetVar"/>
+                </Sequence>
+                <Sequence>
+                    <Inverter>
+                        <Condition ID="StatePickup"/>
+                    </Inverter>
+                    <Condition ID="StateKickOff"/>
+                    <Fallback>
+                        <Sequence>
+                            <Condition ID="DoneKick"/>
+                            <Action ID="SearchAfterKick"/>
+                        </Sequence>
+                        <Sequence>
+                            <Inverter>
+                                <Condition ID="DoneKick"/>
+                            </Inverter>
+                            <Fallback>
+                                <Sequence>
+                                    <Action ID="BallFound"/>
+                                    <Fallback>
+                                        <Sequence>
+                                            <Condition ID="Executor"/>
+                                            <Action ID="BallApproach"/>
+                                        </Sequence>
+                                        <Sequence>
+                                            <Inverter>
+                                                <Condition ID="Executor"/>
+                                            </Inverter>
+                                            <Action ID="Relax"/>
+                                        </Sequence>
+                                    </Fallback>
+                                </Sequence>
+                                <Sequence>
+                                    <Inverter>
+                                        <Action ID="BallFound"/>
+                                    </Inverter>
+                                    <Fallback>
+                                        <Sequence>
+                                            <Condition ID="BallFoundTeam"/>
+                                            <Action ID="Relax"/>
+                                        </Sequence>
+                                        <Sequence>
+                                            <Inverter>
+                                                <Condition ID="BallFoundTeam"/>
+                                            </Inverter>
+                                            <Action ID="WalkSearchBall"/>
+                                        </Sequence>
+                                    </Fallback>
+                                </Sequence>
+                            </Fallback>
+                        </Sequence>
+                    </Fallback>
+                </Sequence>
+            </Fallback>
+        </Sequence>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Action ID="BallApproach"/>
+        <Action ID="BallFound"/>
+        <Condition ID="BallFoundTeam"/>
+        <Action ID="BallTracking"/>
+        <Action ID="Communication"/>
+        <Condition ID="DoneKick"/>
+        <Condition ID="Executor"/>
+        <Condition ID="GameControllerFinish"/>
+        <Condition ID="GameControllerInit"/>
+        <Condition ID="GameControllerPlay"/>
+        <Condition ID="GameControllerReady"/>
+        <Condition ID="GameControllerSet"/>
+        <Action ID="InitialPosition"/>
+        <Condition ID="KillRun"/>
+        <Action ID="OdomUpdate"/>
+        <Action ID="Relax"/>
+        <Action ID="ResetVar"/>
+        <Action ID="RobotPositioning"/>
+        <Action ID="SearchAfterKick"/>
+        <Condition ID="StateKickOff"/>
+        <Condition ID="StatePickup"/>
+        <Condition ID="StateRelease"/>
+        <Action ID="WalkSearchBall"/>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>

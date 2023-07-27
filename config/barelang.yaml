@@ -1,0 +1,125 @@
+robot_3:
+  main_strategy:
+    ros__parameters:
+      robotNumber: 3
+      modePlay: 0 # 1: Internasional, 0 nasional
+
+      frame_X: 640
+      frame_Y: 480
+
+      pPanTendangKanan: -0.20
+      pTiltTendangKanan: -0.40
+      pPanTendangKiri: 0.28
+      pTiltTendangKiri: -0.40
+      ballPositioningSpeed: 0.08
+
+      forceKanan: true
+      forceKiri: false
+
+      cSekarang: -0.60
+      #cAktif: -0.70
+      cAktif: -1.20
+
+      posTiltLocal: -1.90
+      posTiltGoal: -1.30
+
+      ball_panKP: 0.11   #75
+      ball_panKD:  0.001     #0.0000505
+      ball_tiltKP: 0.1    #05
+      ball_tiltKD: 0.001 #0.0000755
+
+      goal_panKP: 0.34 
+      goal_panKD: 0.000395 
+      goal_tiltKP: 0.34 
+      goal_tiltKD: 0.000406
+
+      errorXwalk: 0.0
+      errorYwalk: 0.0
+      errorAwalk: 0.00
+
+      max_current: 200 #batas langkah utk ambil data odom
+      valBolaGerak: 10
+
+      jalan: 0.030 #vel utk ambil data odom
+      lari: 0.030
+      kejar: 0.040
+      kejarMid: 0.040
+      kejarMax: 0.060 
+
+      tendangJauh: 1
+      tendangSamping: 3
+      tendangDekat: 5
+
+      sudutTengah: 0
+      sudutKanan: 30
+      sudutKiri: -30
+
+      rotateGoal_x: -0.0005
+      rotateGoal_y: 0.017
+      rotateGoal_a: 0.14
+
+      myAccrX: 0.3
+      myAccrY: 0.0
+
+      tinggiRobot: 48
+
+      outputSudutY1: 9.0
+      inputSudutY1: -0.40
+      outputSudutY2: 60.0
+      inputSudutY2: -1.43
+
+      outputSudutX1: 0.0
+      inputSudutX1: 0.0
+      outputSudutX2: 45.0
+      inputSudutX2: -0.8
+
+      
+
+      usePenaltyStrategy: false
+      useVision: true
+      useRos: true
+      useImu: true
+      useGameController: true
+      useCoordination: true
+      useLocalization: false
+      useFollowSearchGoal: false
+      useSearchGoal: false
+      useDribble: false
+      dribbleOnly: false
+      useSideKick: false
+      useLastDirection: true
+      useNearFollowSearchGoal: false
+      useDisplay: true
+      useWalkKick: false
+      useFollowExecutor: false
+      useBodyTracking: true
+      useKickOffGoal: true
+      firstStateCondition: 0
+      firstStateLocalization: 0
+      # tree_path: "/home/barelang5/bfc_ros2/src/main/barelang_test_communication.xml"
+      #tree_path: "/home/tegra/bfc_ros2/src/main/barelang_2023_dribble.xml"
+      #tree_path: "/home/tegra/bfc_ros2/src/main/barelang_2023_penalty_no_gc.xml"
+      #tree_path: "/home/tegra/bfc_ros2/src/main/barelang_test.xml"
+      tree_path: "/home/tegra/bfc_ros2/src/main/barelang_2023.xml"
+
+      team: 3 # nomer tim di game controller
+      barelang_color: 1 # inter = team, nasional (0 = cyan, magenta = 1)
+      dropball: 2 # 128 = inter, 2 = nasional
+
+robot_3:
+  game_controller:
+    ros__parameters:
+      Player: 3 # robotNumber
+      Team: 3 # nomer tim di game controller
+      Server: "192.168.1.110"
+
+robot_3:
+  robot_coordination:
+    ros__parameters:
+      RobotID: 3 # robotNumber
+      SERVER1: "192.168.200.11"
+      SERVER2: "192.168.200.12"
+      SERVER3: "192.168.200.13"
+      SERVER4: "192.168.200.14"
+      SERVER5: "192.168.200.15"
+
